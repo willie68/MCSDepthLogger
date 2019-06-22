@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0" creator="ExpertGPS 1.1.1 - http://www.topografix.com"
+	xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd http://www.topografix.com/GPX/Private/TopoGrafix/0/1 http://www.topografix.com/GPX/Private/TopoGrafix/0/1/topografix.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xmlns:topografix="http://www.topografix.com/GPX/Private/TopoGrafix/0/1">
+	<name>F. Gilbert Hills State Forest (Foxboro)</name>
+	<desc>Foxboro is open year-round, making it a great place to ride during the winter months.  As you get further around the loop (riding counter-clockwise) the trail gets harder and harder, until you reach a two mile stretch of continuous rock gardens  and hills which will challenge any rider.  As a reward, after the last bridge, the trail races back to the parking lot on a fast downhill road with some fun jumps.</desc>
+	<author>Dan Foster</author>
+	<email>trails@topografix.com</email>
+	<url>http://www.nemba.org/ridingzone/p_Foxboro_State_Forest.html</url>
+	<urlname>Foxboro description at NEMBA</urlname>
+	<time>2002-04-19T03:02:27Z</time>
+	<keywords>foxboro, gilbert hills, mountain biking</keywords>
+	<bounds minlat="42.049457" minlon="-71.295755" maxlat="42.071779" maxlon="-71.264834">
+	</bounds>
+	<wpt lat="42.062835" lon="-71.279118">
+		<ele>97.444560</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>1942</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.063553" lon="-71.284009">
+		<ele>99.395280</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>1903</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.063376" lon="-71.284365">
+		<ele>104.180640</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>099393</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.066767" lon="-71.287266">
+		<ele>122.925840</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>0977</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.066212" lon="-71.284667">
+		<ele>111.404400</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0996</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.062620" lon="-71.280440">
+		<ele>120.060720</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1932</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.063250" lon="-71.284977">
+		<ele>135.178800</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>099342</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.062548" lon="-71.289134">
+		<ele>130.637280</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0952</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.061545" lon="-71.289552">
+		<ele>126.309120</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0951</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.057477" lon="-71.291170">
+		<ele>115.976400</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0846</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.056740" lon="-71.290582">
+		<ele>98.419920</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0846</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.055824" lon="-71.289594">
+		<ele>102.504240</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0855</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.052559" lon="-71.289766">
+		<ele>117.652800</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0851</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.051020" lon="-71.284936">
+		<ele>101.315520</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0799</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.052579" lon="-71.281656">
+		<ele>104.424480</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1811</name>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.056734" lon="-71.293034">
+		<ele>88.818720</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>SPLIT TREE</name>
+		<desc>A wierd tree with a hole through the trunk</desc>
+		<sym>Park</sym>
+		<type>tree</type>
+	</wpt>
+	<wpt lat="42.056808" lon="-71.286472">
+		<name>ACORNTRAIL</name>
+		<desc>Acorn Trail</desc>
+		<sym>Trail Head</sym>
+		<type>Hiking Trail</type>
+	</wpt>
+	<wpt lat="42.055334" lon="-71.281580">
+		<name>ACORN TR 2</name>
+		<desc>Acorn Trail #2 crosses the Megley Trail</desc>
+		<sym>Trail Head</sym>
+		<type>Hiking Trail</type>
+	</wpt>
+	<wpt lat="42.063436" lon="-71.277851">
+		<ele>114.513360</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>BC SPLIT</name>
+		<cmt>B AND C LOOPS SPLIT</cmt>
+		<desc>B and C Loops Split.
+Short loop - go left.
+Long loop (adds a mile) - go straight.</desc>
+		<sym>Dot</sym>
+		<type>Junction</type>
+	</wpt>
+	<wpt lat="42.062950" lon="-71.279507">
+		<ele>115.001040</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>BC JOIN</name>
+		<desc>BC Routes join again</desc>
+		<sym>Dot</sym>
+		<type>Dot</type>
+	</wpt>
+	<wpt lat="42.051532" lon="-71.268483">
+		<ele>82.082640</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>2729 SPLIT</name>
+		<desc>Bike Loop Split - Junction and sign at top of first hill of bike loop.</desc>
+		<sym>Dot</sym>
+		<type>Trail Intersection</type>
+	</wpt>
+	<wpt lat="42.066694" lon="-71.279598">
+		<ele>109.240320</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1946BRIDGE</name>
+		<desc>Bridge</desc>
+		<sym>Bridge</sym>
+		<type>Bridge</type>
+	</wpt>
+	<wpt lat="42.056296" lon="-71.282401">
+		<ele>96.012000</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>CELLARHOLE</name>
+		<desc>Cellar Hole in wetlands</desc>
+		<sym>Building</sym>
+		<type>Building</type>
+	</wpt>
+	<wpt lat="42.065352" lon="-71.286338">
+		<ele>145.298160</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>CHICKN</name>
+		<desc>Chicken Rock
+We named it Chicken Rock because I was too chicken to ride down it.</desc>
+		<sym>Shipwreck</sym>
+		<type>obstacle</type>
+	</wpt>
+	<wpt lat="42.058453" lon="-71.288327">
+		<ele>117.165120</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>CRAZY ROCK</name>
+		<desc>Crazy Drop Rock
+A 30-foot rock face to ride down, if you dare.</desc>
+		<sym>Summit</sym>
+		<type>Rock</type>
+	</wpt>
+	<wpt lat="42.055986" lon="-71.279241">
+		<ele>106.344720</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1835</name>
+		<desc>Dirt Road</desc>
+		<sym>Truck Stop</sym>
+		<type>Truck Stop</type>
+	</wpt>
+	<wpt lat="42.056661" lon="-71.267519">
+		<ele>95.067120</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>GRANITE ST</name>
+		<desc>Granite Street</desc>
+		<sym>Truck Stop</sym>
+		<type>Road Crossing</type>
+	</wpt>
+	<wpt lat="42.062471" lon="-71.277479">
+		<ele>92.415360</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>1952</name>
+		<desc>Hiking Trail</desc>
+		<sym>Trail Head</sym>
+		<type>Trail Head</type>
+	</wpt>
+	<wpt lat="42.056421" lon="-71.278999">
+		<ele>89.275920</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>HIGH-WOLF</name>
+		<desc>Intersection of High Rock Rd & Wolf Meadow Rd</desc>
+		<sym>RV Park</sym>
+		<type>Road Intersection</type>
+	</wpt>
+	<wpt lat="42.056760" lon="-71.282432">
+		<ele>97.231200</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>MEGLEYHIGH</name>
+		<desc>Intersection of Megley Trail and High Rock Rd</desc>
+		<sym>Trail Head</sym>
+		<type>Road Intersection</type>
+	</wpt>
+	<wpt lat="42.052770" lon="-71.274466">
+		<ele>79.918560</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>ROCKW-WOLF</name>
+		<desc>Intersection of Rockwood Rd and Wolf Meadow Rd</desc>
+		<sym>RV Park</sym>
+		<type>Road Intersection</type>
+	</wpt>
+	<wpt lat="42.057331" lon="-71.268680">
+		<ele>105.643680</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>LAKEVIEW</name>
+		<cmt>LAKEVIEW ROAD</cmt>
+		<desc>Lakeview Road</desc>
+		<sym>Truck Stop</sym>
+		<type>Road Crossing</type>
+	</wpt>
+	<wpt lat="42.065557" lon="-71.277002">
+		<ele>110.185200</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1965 LEFT</name>
+		<cmt>LEFT TURN</cmt>
+		<desc>Left Turn
+Trail turns left and skirts pond.</desc>
+		<sym>Dot</sym>
+		<type>Junction</type>
+	</wpt>
+	<wpt lat="42.053362" lon="-71.283462">
+		<ele>89.763600</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>MEGLEY 2</name>
+		<desc>Megley Trail #2</desc>
+		<sym>RV Park</sym>
+		<type>Dirt Road Crossing</type>
+	</wpt>
+	<wpt lat="42.052723" lon="-71.287615">
+		<ele>102.016560</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>MEGLEY 1</name>
+		<desc>Megley Trail Crossing #1</desc>
+		<sym>Truck Stop</sym>
+		<type>Dirt Road Crossing</type>
+	</wpt>
+	<wpt lat="42.049457" lon="-71.266758">
+		<ele>102.260400</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>PARKINGLOT</name>
+		<desc>Parking Lot at Ranger Station</desc>
+		<sym>Parking Area</sym>
+		<type>Parking</type>
+	</wpt>
+	<wpt lat="42.060951" lon="-71.287478">
+		<name>RADIOTOWER</name>
+		<desc>Radio Tower</desc>
+		<sym>Tall Tower</sym>
+		<type>Radio Tower</type>
+	</wpt>
+	<wpt lat="42.055912" lon="-71.288234">
+		<ele>102.016560</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>RIGHT TURN</name>
+		<desc>Right Turn!
+This intersection isn't marked.  Go right.</desc>
+		<sym>Dot</sym>
+		<type>Intersection</type>
+	</wpt>
+	<wpt lat="42.066468" lon="-71.287993">
+		<ele>124.388880</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0976 ROAD</name>
+		<desc>Road Crossing</desc>
+		<sym>Truck Stop</sym>
+		<type>Truck Stop</type>
+	</wpt>
+	<wpt lat="42.063560" lon="-71.289705">
+		<ele>127.010160</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>0953 ROAD</name>
+		<desc>Road Crossing</desc>
+		<sym>Truck Stop</sym>
+		<type>Road</type>
+	</wpt>
+	<wpt lat="42.064445" lon="-71.289218">
+		<ele>123.413520</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>ROLLINGROC</name>
+		<desc>Rolling Rock
+There used to be a huge boulder at the top of this hill.  Where it rolled to, nobody knows.</desc>
+		<sym>Summit</sym>
+		<type>Rock</type>
+	</wpt>
+	<wpt lat="42.066198" lon="-71.285812">
+		<ele>115.001040</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>ROOTROCK</name>
+		<desc>Root Rock - This is a climb up a bare rock with a nasty root at the bottom where we took some photos.</desc>
+		<sym>Summit</sym>
+		<type>Rock</type>
+	</wpt>
+	<wpt lat="42.057601" lon="-71.295536">
+		<ele>105.156000</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>SANDPIT</name>
+		<desc>Sand Pit on Route 1</desc>
+		<sym>Mine</sym>
+		<type>Sand Pit</type>
+	</wpt>
+	<wpt lat="42.056751" lon="-71.287696">
+		<ele>101.071680</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>WARNERSIGN</name>
+		<desc>Trail sign for the Warner and Acorn Trails</desc>
+		<sym>Trail Head</sym>
+		<type>Trail Intersection</type>
+	</wpt>
+	<wpt lat="42.055862" lon="-71.279424">
+		<ele>104.912160</ele>
+		<time>2002-03-09T23:06:30Z</time>
+		<name>1834</name>
+		<desc>Water Crossing at the end of the ride</desc>
+		<sym>Crossing</sym>
+		<type>Crossing</type>
+	</wpt>
+	<wpt lat="42.057958" lon="-71.287304">
+		<ele>107.320080</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>HOLE17</name>
+		<desc>Water Hole #17 on the Warner Trail</desc>
+		<sym>Fishing Area</sym>
+		<type>Water Hole</type>
+	</wpt>
+	<wpt lat="42.056395" lon="-71.280662">
+		<ele>93.146880</ele>
+		<time>2001-11-03T22:27:37Z</time>
+		<name>HOLE4</name>
+		<desc>Water Hole #4</desc>
+		<sym>Fishing Area</sym>
+		<type>Water Hole</type>
+	</wpt>
+</gpx>

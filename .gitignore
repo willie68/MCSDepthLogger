@@ -1,0 +1,7 @@
+/.svn
+/3'rd Party
+/bin
+/dist
+/target
+
+tools/jdk-12\.0\.1/

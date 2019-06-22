@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="buildSetup" name="MCS_Depth_Logger">
+	<property name="launch4j.dir" location="3'rd Party/launch4j" />
+	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
+	        :${launch4j.dir}/lib/xstream.jar" />
+
+	<property name="app.name" value="MCS_Depth_Logger" />
+	<property name="doc" value="${basedir}/docs" />
+	<property name="javadoc" value="${doc}/javadoc" />
+	<property name="src" value="src/main/java" />
+	<property name="lib" value="lib" />
+	<property name="src-java" value="${src}" />
+	<property name="src-test" value="src/test/java" />
+	<!-- hierhin kann man temporaer was schreiben -->
+	<property name="dist" value="c:/temp/javaBuild" />
+	<property name="dobudish" value="${basedir}/3'rd Party/dobudish" />
+	<property name="webroot" value="webroot" />
+	<property name="dist.doc" value="${dist}/doc" />
+	<property name="javadoc.j2se.api" value="D:/sprachen/java/jdk1.6/docs/api/" />
+	<property name="dist.home" value="${dist}/${app.name}" />
+	<property name="dist.home.webroot" value="${dist.home}/webroot" />
+	<property name="dist.home.webinf" value="${dist.home}/WEB-INF" />
+	<property name="dist.home.classes" value="${dist.home}/classes" />
+	<property name="dist.home.client.classes" value="${dist.home}/client/classes" />
+	<property name="dist.home.lib" value="${dist.home}/lib" />
+	<property name="dist.home.images" value="${dist.home.classes}/images" />
+	<property name="dist.jar" value="${app.name}.jar" />
+
+	<property name="library" value="${basedir}\lib" />
+
+	<property name="build" value="${basedir}\lib\build" />
+
+	<property name="noticename" value="notice.txt" />
+
+	<property name="MCSUtils" value="MCSUtils.jar" />
+	<property name="MCSUtilsDist" value="..\MCSUtils\dist\${MCSUtils}" />
+	<property name="XML-Writer" value="xml-writer.jar" />
+	<property name="JUnit" value="junit.jar" />
+
+	<property file="build.properties" />
+
+	<fileset id="libraries" defaultexcludes="yes" dir="${library}">
+		<include name="*.jar" />
+	</fileset>
+
+	<fileset id="mcslibraries" defaultexcludes="yes" dir="${library}">
+		<include name="MCS*.jar" />
+	</fileset>
+
+	<fileset id="build" defaultexcludes="yes" dir="${build}">
+		<include name="*.jar" />
+	</fileset>
+
+	<fileset id="metainf" defaultexcludes="yes" dir="${dist.home.classes}\META-INF">
+		<include name="*" />
+	</fileset>
+
+	<fileset id="manifest" defaultexcludes="yes" dir="${basedir}\src\java">
+		<include name="manifest.mf" />
+	</fileset>
+
+	<fileset id="javadocs" defaultexcludes="yes" dir="${doc}">
+		<include name="javadoc/**/*" />
+	</fileset>
+
+	<fileset id="language" defaultexcludes="yes" dir="${src-java}">
+		<include name="**/*.properties" />
+	</fileset>
+
+	<fileset id="images" defaultexcludes="yes" dir="${src-java}">
+		<include name="**/*.gif" />
+		<include name="**/*.jpg" />
+		<include name="**/*.png" />
+	</fileset>
+
+	<fileset id="webroot" defaultexcludes="yes" dir="${webroot}">
+		<include name="**/*" />
+		<exclude name="**/*.db" />
+		<!-- den extJS CLient erst mal nicht deployen -->
+		<exclude name="client/**/*" />
+		<exclude name="client/extjs/build/**/*" />
+		<exclude name="client/extjs/builds/**/*" />
+		<exclude name="client/extjs/docs/**/*" />
+		<exclude name="client/extjs/examples/**/*" />
+		<exclude name="client/extjs/jsbuilder/**/*" />
+		<exclude name="client/extjs/pkgs/**/*" />
+		<!-- <exclude name="client/extjs/src/**/*" /> -->
+		<exclude name="client/extjs/welcome/**/*" />
+	</fileset>
+
+	<!-- <taskdef classpathref="cobertura.classpath" resource="tasks.properties" /> -->
+	<target name="init">
+<!--
+		<copy file="${MCSUtilsDist}" todir="${lib}" />
+		-->
+	</target>
+
+	<target name="prepare_properties" description="reads properties and sets default values" depends="init">
+		<!-- update build information by incrementing build-number and actualizing date -->
+		<propertyfile file="${basedir}/build.properties" comment="MCSDepthLogger interactive build information file. This file is created automatically. DO NOT CHANGE !">
+			<entry key="build.num" type="int" default="00" operation="+" pattern="00" />
+			<entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy HH:mm:ss" />
+		</propertyfile>
+
+		<!-- read build.properties -->
+		<property file="${basedir}/build.properties" />
+		<property name="releasenumber" value="${releasenum}.${build.num}">
+		</property>
+		<property name="jarname" value="dist/${app.name}-${releasenumber}.jar">
+		</property>
+		<property name="jarappname" value="dist/${app.name}.jar">
+		</property>
+		<property name="clientjarname" value="dist/${app.name}-${releasenumber}-client.jar" />
+		<property name="jarcorename" value="dist/${app.name}-core-${releasenumber}.jar">
+		</property>
+		<property name="zipjarname" value="${jarname}.zip">
+		</property>
+		<property name="jarsrcname" value="dist/${app.name}-${releasenumber}-src.jar">
+		</property>
+		<property name="zipjarsrcname" value="${jarsrcname}.zip">
+		</property>
+		<property name="zipdoc" value="./dist/${app.name}-${releasenumber}-docs.zip">
+		</property>
+		<property name="zipall" value="./dist/${app.name}-${releasenumber}-all.zip">
+		</property>
+		<property name="business" value="./dist/${app.name}-${releasenumber}-business.jar">
+		</property>
+		<property name="zipexename" value="${app.name}-${releasenumber}.zip" />
+		<property name="version.string" value="${version.major}.${version.minor}.${version.release}.${build.num}" />
+		<property name="version.string.text" value="${app.name}-${releasenumber}" />
+
+		<propertyfile file="${src}/de/mcs/version.properties" comment="Version information">
+			<entry key="build.num" value="${build.num}" />
+			<entry key="build.date" value="${build.date}" />
+			<entry key="release.version" value="${version.major}.${version.minor} - ${release.name}" />
+			<entry key="build.year" type="date" value="now" pattern="yyyy" />
+			<entry key="version.string" value="${version.major}.${version.minor}.${version.release}.${build.num}" />
+		</propertyfile>
+		<echoproperties />
+	</target>
+
+	<!-- create directories -->
+	<target name="prepare" description="prepare directory structure" depends="init, clean">
+		<mkdir dir="${dist}" />
+		<mkdir dir="${dist.home}" />
+		<mkdir dir="${dist.home.classes}" />
+		<mkdir dir="${dist.home.webroot}" />
+		<mkdir dir="./dist" />
+	</target>
+
+	<!-- delete intermediate files -->
+	<target name="clean" description="delete intermediate files">
+		<delete dir="${dist}" failonerror="false" />
+		<delete dir="./dist" failonerror="false" />
+	</target>
+
+	<!-- compile files -->
+
+	<target name="compile" depends="prepare, prepare_properties" description="compile all files">
+		<javac srcdir="${src-java}" destdir="${dist.home.classes}" debug="true" debuglevel="lines,vars,source">
+			<classpath path="${classpath}" />
+			<classpath>
+				<fileset refid="libraries" />
+				<pathelement location="${src-java}" />
+			</classpath>
+			<compilerarg value="-deprecation" />
+		</javac>
+	</target>
+
+	<target name="countSourceFiles" description="counting source files" depends="prepare, prepare_properties" if="countSource">
+		<java fork="false" classname="de.mcs.utils.statistics.Count">
+			<classpath>
+				<path path="${dist.home.classes}" />
+			</classpath>
+			<classpath>
+				<fileset refid="libraries" />
+				<pathelement location="${src-java}" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="build_zipsrc" description="building demo data import file" depends="">
+		<zip destfile="${jarsrcname}">
+			<fileset dir="${src}">
+				<exclude name="**/*.zip" />
+			</fileset>
+		</zip>
+	</target>
+
+	<!-- build distribution -->
+	<target name="dist" description="copy 3'rd party libs to class path" depends="countSourceFiles, compile, zip javadoc">
+		<copy todir="${dist.home.classes}">
+			<fileset dir="${src-java}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.schema" />
+				<include name="**/*.form" />
+				<include name="**/*.zip" />
+				<include name="**/*.command" />
+				<include name="**/*.types" />
+				<include name="**/*.cmd" />
+				<include name="**/*.png" />
+				<include name="**/*.bmp" />
+				<include name="**/*.gif" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="javadoc" depends="prepare" if="buildJavadoc">
+		<!--		<mkdir dir="${doc}/javadoc" />
+		<javadoc destdir="${doc}/javadoc" access="public" use="true" notree="false" nonavbar="false" noindex="false" splitindex="true" author="true" version="true" nodeprecatedlist="false" nodeprecated="false" packagenames="de.mcs.depth" overview="${basedir}\src\overview.html" doctitle="MCS Small Archive" additionalparam="-linkoffline http://java.sun.com/javase/6/docs/api/ file:/${javadoc.j2se.api} -source ${src-java} ">
+			<classpath path="${classpath}" />
+			<classpath>
+				<fileset refid="libraries" />
+				<pathelement location="${src-java}" />
+			</classpath>
+			<sourcepath>
+				<pathelement path="${src-java}" />
+			</sourcepath>
+		</javadoc>
+		-->
+		<propertyfile file="${dobudish}/documents/Help/custom-cfg/localbuild.properties" comment="Version information">
+			<entry key="document.version" value="${version.major}.${version.minor}.${version.release}.${build.num}" />
+		</propertyfile>
+
+		<copy file="docs/Help.xml" todir="3'rd Party/dobudish/documents/Help/input/" overwrite="true">
+		</copy>
+		<copy todir="${dobudish}/documents/Help/input/resource">
+			<fileset dir="docs/resource" >
+				<include name="*.bmp"/>
+				<include name="*.jpg"/>
+				<include name="*.png"/>
+			</fileset>
+		</copy>
+		<exec executable="cmd.exe" dir="${dobudish}">
+			<arg value="/c"/>
+			<arg value="generator.bat"/>
+			<arg value="Help" />
+			<arg value="javahelp" />
+		</exec>
+		<copy file="3'rd Party/dobudish/documents/Help/output/javahelp/Help.jar" todir="${lib}"></copy>
+	</target>
+
+	<target name="zip javadoc" depends="javadoc, prepare_properties">
+		<zip destfile="${zipdoc}">
+			<fileset refid="javadocs">
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="create_run_jar" depends="zip javadoc, dist, build_zipsrc">
+		<mkdir dir="dist" />
+		<jar destfile="${jarname}">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="de.mcs.depth.MainGUI" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ appFramework-1.0.jar commons-codec-1.6.jar commons-collections-3.2.1.jar commons-configuration-1.6.jar commons-io-2.0.jar commons-lang-2.4.jar commons-logging-1.1.3.jar fluent-hc-4.3.1.jar gson-2.2.4.jar Help.jar hsviewer.jar httpclient-4.3.1.jar httpclient-cache-4.3.1.jar httpcore-4.3.jar httpmime-4.3.1.jar jcommon-1.0.21.jar jdom-2.0.4.jar jfreechart-1.0.17.jar jgoodies-common-1.6.0.jar jgoodies-forms-1.7.1.jar jh.jar JSAP-2.1.jar jxmapviewer2-1.3-SNAPSHOT.jar log4j-1.2.15.jar MCSUtils.jar RouteConverterCmdLine.jar swingx-all-1.6.5-1.jar TableLayout.jar TaskProcessor.jar " />
+				<attribute name="main-version" value="${releasenumber}" />
+				<attribute name="main-build-date" value="${build.date}" />
+				<attribute name="main-vendor" value="MCS" />
+				<attribute name="main-product" value="MCS Open Sea Map" />
+				<attribute name="main-component" value="${app.name}" />
+			</manifest>
+			<zipfileset src="jar-in-jar-loader.zip" />
+			<fileset file="${dist.home}/webroot.zip" />
+			<fileset dir="${dist.home.classes}" />
+			<zipfileset dir="${lib}" includes="*.jar" />
+			<fileset file="${zipdoc}" />
+			<fileset file="${jarsrcname}" />
+		</jar>
+	</target>
+
+	<target name="copy_dist" depends="create_run_jar">
+		<copy file="${jarname}" tofile="dist/${app.name}.jar">
+		</copy>
+		<copy file="${jarsrcname}" tofile="dist/${app.name}-src.jar">
+		</copy>
+		<copy todir="dist/tools">
+			<fileset dir="tools">
+				<include name="**/*.exe" />
+				<include name="**/*.dll" />
+				<include name="**/*.qm" />
+				<include name="**/f*.zip" />
+			</fileset>
+		</copy>
+		<copy todir="dist/tools/jdk-12.0.1">
+			<fileset dir="tools/jdk-12.0.1">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="createExe" depends="copy_dist">
+		<launch4j configFile="./launch4j.xml" fileVersion="${version.string}" txtFileVersion="${version.string.text}" productVersion="${version.string}" txtProductVersion="${version.string.text}" />
+		<!-- <zip destfile="dist/${zipexename}"> <fileset dir="dist"> <include name="*.exe" /> </fileset> </zip> -->
+	</target>
+
+	<target name="buildSetup" depends="createExe" if="buildSetup">
+		<copy file="setup/settings.tmpl" tofile="setup/settings.txt" overwrite="true">
+		</copy>
+		<replace file="setup/settings.txt" token="$AppVersion" value="${version.string}">
+		</replace>
+		<exec dir="." executable="cmd">
+			<arg line="/c setup\setup.cmd setup\setup.iss" />
+		</exec>
+		<zip destfile="dist/MCS_Depth_Logger_Setup.zip">
+			<fileset dir="dist">
+				<include name="MCS_Depth_Logger_Setup.exe" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="FTPupload" description="uploading the zip to my homeserver">
+		<ftp server="klaas.homeip.net" userid="willie" password="akteon">
+			<fileset file="dist/MCSSmallArchive.jar" />
+		</ftp>
+	</target>
+</project>

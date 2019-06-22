@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+	"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book lang="de">
+  <title>MCS
+    Depth Logger &docversion;
+  </title>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resource/Willie-Logo.png" format="PNG" width="4in" />
+      </imageobject>
+    </mediaobject>
+    MCS Depth Logger
+		<!-- Version &docversion; -->
+  </para>
+  <para>
+    Dieses Programm dient der Vereinfachung verschiedener Aufgaben,
+    die im Zusammenhang mit dem NMEA Datenlogger
+    auftreten.
+  </para>
+  <chapter id="introduction">
+    <title>Einleitung</title>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/Willie-Logo.png" format="PNG" width="4in" />
+        </imageobject>
+      </mediaobject>
+      Dieses Programm dient der Vereinfachung verschiedener Aufgaben, die im Zusammenhang mit dem NMEA Datenlogger auftreten. Dazu zählen
+      <itemizedlist mark='bullet'>
+        <listitem>
+          <para>
+            Überprüfung der Datendateien und evt. Berichtigung
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Upload auf einen Server
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Konfiguration des Loggers
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Firmwareupdate inkl. Vorbereitung der Datenkarten (für Bootloader Version 1)
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>Gerade für den letzten Punkt ist eine Unterstützung (für den Bootloader Version 1) sehr sinnvoll, da das Erzeugen einer konformen
+        Datenkarte für das Loggerupdate einige Schritte beinhaltet, die mit normalen Betriebssystemhilfsmitteln
+        nicht möglich sind.
+      </para>
+      <para>Diese Anleitung beschränkt sich auf die wichtigsten Aufgaben des Programms.
+      </para>
+      <indexterm>
+        <primary>Einleitung</primary>
+      </indexterm>
+    </para>
+  </chapter>
+  <chapter id="installation">
+    <title>Installation</title>
+    <para>Zur Installation führen Sie bitte das Setupprogramm aus und folgen Sie den Anweisungen.
+    </para>
+    <indexterm>
+      <primary>Installation</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="checkData">
+    <title>Anzeige und Überprüfung der Daten</title>
+    <para>
+      Starten Sie das Programm. (Wenn Sie diese Hilfe sehen, haben Sie dieses wahrscheinlich schon gemacht.) Legen
+      Sie bitte ihre SD-Karte in den dafür vorgesehen Kartenleser. Wenn die Karte bereits eingelegt
+      war, sollten Sie diese im linken Teil des Programmfensters (SD Kartenlaufwerk) auswählen können. Wenn Ihre Karte
+      nicht aufgeführt ist, drücken Sie bitte auf den Knopf aktualisieren.[
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/refresh1.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] Sollte jetzt da Laufwerk immer noch nicht erscheinen, schauen Sie
+      bitte im Betriebssystem nach, ob dort das Laufwerk richtig angezeigt
+      wird. Damit das Programm mit dem Laufwerk arbeiten kann, muss dieses
+      als Wechseldatenträger erscheinen.
+    </para>
+    <para>
+      Während im linken Teil des Programmfensters verschiedene Daten der
+      Karte erscheinen, werden im rechten Teil alle Datendateien
+      aufgeführt. Wird nun eine Datendatei selektiert, erscheinen links
+      Informationen zur Datei im Bereich Dateiinformation. Über den Knopf [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/vinyl.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      Analysieren] können Sie nun eine Analyse über die Datei ausführen.
+      Hierbei werden alle NMEA Datensätze auf evt. Übertragungsfehler
+      geprüft. Über den Schalter [auto. Analyse] wird diese Analyse
+      automatisch bei der Selektion einer Datei ausgeführt.
+      <emphasis>ACHTUNG: Das Analysieren großer Dateien kann ein paar Minuten in Anspruch nehmen. </emphasis>
+    </para>
+    <indexterm>
+      <primary>Anzeige und Überprüfung der Daten</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="uploadData">
+    <title>Upload der Daten</title>
+    <para>
+      Für den Upload der Daten müssen Sie zunächst im Programm einige
+      Einstellungen vornehmen. Rufen Sie dazu den Dialog
+      Einstellungen auf.[
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/settings.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ]
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/settings_dialog_1.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/settings_dialog_2.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+      Hier tragen Sie bitte zunächst die URL für den Upload ein. Die URL erfragen Sie bitte bei ihrem Upload Portal.
+      Weiterhin müssen der Benutzername und das
+      Passwort für die Authentifizierung angegeben werden. Eventuell müssen die
+      Dateien noch vor dem Upload vorbereitet werden. Dazu dient das Feld Vorbereitung.
+      hier kann eine Batchdatei angegeben
+      werden, die die Dateivorbereitung übernimmt. Näheres erfragen Sie bitte bei ihrem Upload-Portal.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/settings_dialog_3.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+    </para>
+    <para>
+      Zum Upload selektieren Sie bitte die Dateien, die Sie zum Server
+      hochladen möchten. Dann drücken Sie bitte
+      auf den
+      Knopf [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/cloud10.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] Nach dem Beantworten der Frage mit [OK]
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/upload_question.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+      wird nun ein temporärer Ordner erstellt. Dorthin werden die
+      Datendateien kopiert. Dann werden noch die
+      zusätzlichen
+      Information
+      über den verwendeten Logger
+      erzeugt. Auch wird eine Datei mit der
+      Schiffskennung,
+      falls vorhanden, angelegt.
+      Erst jetzt wird, wenn
+      eingestellt, pro Datei die Vorbereitung gestartet.
+      (Sowohl
+      die
+      interne, wie danach auch die
+      externe Vorbereitung)
+      <mediaobject></mediaobject>
+      Jetzt wird das Verzeichnis in einer ZIP Datei komprimiert und zu dem
+      Server hochgeladen. Dabei werden, bei
+      Bedarf, die
+      Authentifizierungsinformationen
+      verwendet. Nach Abschluss erscheint
+      in
+      der Statuszeile eine
+      Erfolgsmeldung.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/upload_ok.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+    </para>
+    <indexterm>
+      <primary>Upload der Daten</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="configLogger">
+    <title>Konfiguration des Loggers</title>
+    <para>
+      Der Logger wird in einer Standardkonfiguration ausgeliefert.
+      Will man
+      den Logger mit anderen Parametern
+      betreiben, muss
+      man die
+      Konfiguration ändern. Den
+      Dialog
+      dazu ruft man über den Knopf [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/compose.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] auf.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/logger_conf.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+      Folgende Einstellungen können über den Dialog gemacht werden.
+      <itemizedlist mark='bullet'>
+        <listitem>
+          <para>
+            Kanal A Baudrate: Baudrate für den Kanal A, NMEA Standard ist
+            4800
+            Baud, was auch der Default
+            ist. Möglich sind
+            1200, 2400, 4800,
+            9600, 19200 und
+            deaktiviert.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Seatalk: Hiermit wird der Seatalk Anschluss aktiviert. Neben
+            der Hardwareumschaltung (über den
+            internen Jumper)
+            muss auch hier
+            in der Konfiguration
+            Seatalk aktiviert werden. Damit wird
+            automatisch das Protokoll und die Baudrate
+            richtig gewählt. (9N1
+            und 4800 Baud)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Kanal B Baudrate: Baudrate für den Kanal B, NMEA Standard ist
+            4800 Baud, was auch der Default
+            ist. Möglich sind
+            1200, 2400, 4800
+            und deaktiviert.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Features: schreibe Gyrodaten: Mit diesem Schalter werden die
+            Daten des eingebauten Gyroscopes
+            als NMEA
+            Nachrichten mit
+            aufgezeichnet. Default ist
+            eingeschaltet.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Features: schreibe Spannungsversorgungsdaten: Mit diesem
+            Schalter wird die interne
+            Spannungsversorgung
+            protokolliert.
+            Schalten Sie dieses Feature
+            nur
+            ein, wenn es benötigt wird.
+            Default ist ausgeschaltet.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Schiff-ID: Numerische Schiffs-ID. Wird für den Upload
+            benötigt, um das Schiff und damit die
+            Parameter für die
+            GPS und
+            Echolotpositionen zu
+            identifizieren.
+          </para>
+        </listitem>
+      </itemizedlist>
+      Bei [OK] werden die Daten automatisch auf die ausgewählte SD-Karte in
+      die Datei "config.dat" geschrieben
+    </para>
+    <indexterm>
+      <primary>Konfiguration des Loggers</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="updateFirmware">
+    <title>Firmwareupdate des Loggers</title>
+    <para>
+      Der Logger schreibt automatisch die Version der Firmware und seine aktuellen Einstellungen auf die SD-Karte
+      (in die Datei "oseamlog.cnf"). Anhand dieser Daten kann das Programm ermitteln, ob ein Firmwareupdate nötig ist.
+      Dazu drücken Sie bitte auf den Knopf [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/upload5.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] Beim Bootloader Version 2 wird der ganze Prozess verkürzt und es wird nur die neue Firmware auf die SD Karte gschrieben. (Punkt 4) 
+      Beim Bootloader Version 1 kann Systembedingt ein Firmwareupdate nur auf einer SD-Karte, 
+      die mit dem FAT Filesystem formatiert wurde, erfolgen. FAT wird aber nur von Karten &lt;=2GB unterstützt. 
+      Unter neueren Betriebssystem ist es manchmal auch nicht mehr möglich einen Datenträger mit FAT zu formatieren. 
+      Deswegen übernimmt das Programm hier die richtige Konfiguration der SD-Karte. Dabei werden folgende Schritte durchgeführt:
+      <itemizedlist mark='bullet'>
+        <listitem>
+          <para>
+            Zunächst wird geprüft, ob die Karte nicht bereits ein FAT Dateisystem hat. Wenn ja werden die folgenden 2 Punkte übersprungen.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Es liegt kein FAT Dateisystem vor: Zunächst wird angeboten, ein Backup von der aktuellen Karte zu machen. 
+            Dieses kann später mit dem
+            <link linkend="sd_card_management">SD Kartenverwaltungstool</link>
+            wiederhergestellt werden.
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="resource/firmware_backup.png" format="PNG" />
+              </imageobject>
+            </mediaobject>
+            [Ja] startet das Backup für diese Karte, [Nein] überspringt diesen
+            Schritt und mit [Abbrechen] können Sie den gesamten Updateprozess
+            abbrechen. Beim Backup wird das Programm win32Diskimager in der
+            MCS Version gestartet. Dieses Programm erzeugt von der Karte ein
+            vollständiges Image. Dieses kann zu einem späteren Zeitpunkt
+            wieder auf die Karte geschrieben werden. Achten Sie bitte beim
+            Backup darauf, dass überall immer das richtige Laufwerk gewählt
+            wurde.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Nun wird automatisch ein vorbereitetes FAT Image mit Hilfe des
+            win32diskimager auf die Karte
+            gespielt. Diese ist ca.
+            120MB groß.
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="resource/win32_diskimager.png" format="PNG" />
+              </imageobject>
+            </mediaobject>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Nun wird wenn nicht bereits geschehen, die aktuelle Firmware von dem Server heruntergeladen und auf dem Rechner gespeichert.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Von dort wird diese dann auf die FAT Partition kopiert. Neben der Firmware wird auch noch die Versionskennzeichendatei kopiert.
+          </para>
+        </listitem>
+      </itemizedlist>
+      Nun muss diese Karte nur noch in den Logger eingelegt werden und dieser gestartet werden. Sobald die grüne LED
+      dauerhaft leuchtet ist der Updatevorgang abgeschlossen. Warten Sie nun bitte noch 30 Sekunden, bevor Sie den Logger
+      wieder ausschalten.
+    </para>
+    <indexterm>
+      <primary>Firmwareupdate des Loggers</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="sd_card_management">
+    <title>SD-Kartenverwaltung</title>
+    <para>
+      Mit Hilfe der SD-Karten Verwaltung [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/stiffy.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] können Sie die im vorherigen Schritt erzeugten Images verwalten.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resource/manage_sd_card.png" format="PNG" />
+        </imageobject>
+      </mediaobject>
+      Sie können hier mit dem Knopf [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/bin3.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] Images löschen, mit [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/intro.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] wieder zurück auf die SD Karte schreiben, mit [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/folder15.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] starten Sie einen Explorer auf dem Programmspeicherplatz.
+      Mit [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/power5.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] verlassen Sie den Dialog.
+    </para>
+    <indexterm>
+      <primary>SD-Kartenverwaltung</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="showMap">
+    <title>Kartendarstellung</title>
+    <para>
+      Mit dieser Funktion werden die Daten automatisch konvertiert und dann in der in den Einstellunge hinterlegten
+      Kartenanzeige zu Anzeige gebracht. Somit
+      können Sie ihren Track nun auch auf einer Karte verfolgen.
+    </para>
+    <indexterm>
+      <primary>Track auf Karte</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="export">
+    <title>Daten exportieren, Format konvertieren</title>
+    <para>
+      Mit dieser Funktion werden die Daten extrahiert und automatisch in ein anderes Format konvertiert. Das Format
+      wird anhand des Dateifilters ausgewählt.
+      Benötigt der gewählte Filter spezeille Einstellungen, geht nach der Auswahl
+      oder Eingabe des Dateinamens ein zusätzlicher Dialog auf.
+    </para>
+    <para>
+      Unterstützte Formate:
+      <itemizedlist mark='bullet'>
+        <listitem>
+          <para>NMEA: Exportiert die Datei in das Standard-NMEA-Format. Hierbei wird automatisch der Zeitstempel und die
+            Kanalkennzeichnung verworfen.
+          </para>
+        </listitem>
+        <listitem>
+          <para>GPX: Exportiert die Datei im GPX-Format als ein Track.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Logger: Exportiert die Datei in dem speziellen Logger-Format.
+          </para>
+        </listitem>
+        <listitem>
+          <para>alle Dateien: Exportiert die Datei im Originalformat. Hierbei werden nur die Daten richtig konvertiert.
+            (Umgebrochene Zeilen werden automatisch
+            zusammengefasst)
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <indexterm>
+      <primary>Export</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="import">
+    <title>Daten importieren</title>
+    <para>
+      Mit der Funktion Import [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/incoming.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] können Sie auf bereits auf der Festplatte sich befindende Daten zugreifen. Hierbei müssen Sie nur den Pfad zu dem Verzeichniss mit den Daten angeben. 
+      Wurde eine komplette SD Karte mit allen Daten kopiert, werden auch die Parameter des Loggers angezeigt. 
+    </para>
+    <indexterm>
+      <primary>Importieren</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="Zeitstempel">
+    <title>Zeitstempel</title>
+    <para>
+      Mit der Funktion Zeitstempel [
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/clock3.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ] werden alle Quelldateien (auf der SD Karte) mit einem neuen Zeitstempel versehen. Als Grundlage wird die letzte GPS Zeitangabe der Datei verwendet.
+      Ist kein Zeitstempel in der Datei vorhanden, wird die Datei nicht verändert.
+    </para>
+    <indexterm>
+      <primary>Importieren</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="settings">
+    <title>Einstellungen im Programm</title>
+    <para>
+      Für einige Bereiche im Programm müssen Sie zunächst Einstellungen vornehmen. Rufen Sie dazu den Dialog Einstellungen auf.[
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="resource/settings.png" format="PNG" />
+        </imageobject>
+      </inlinemediaobject>
+      ]
+    </para>
+    <section>
+      <title>Allgemeine Einstellungen</title>
+      <para>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resource/settings_dialog_1.png" format="PNG" />
+          </imageobject>
+        </mediaobject>
+        Hier können Sie den Ablagepfad für die Trackinformationen bestimmen. Ein einzelner Track wird als ZIP-Datei
+        gespeichert. Die Baumdarstellung in der Anzeige entspricht dann tatsächlich der Ordneranzeige in diesem Pfad.
+      </para>
+    </section>
+    <section>
+      <title>Upload</title>
+      <para>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resource/settings_dialog_2.png" format="PNG" />
+          </imageobject>
+        </mediaobject>
+        Hier tragen Sie bitte zunächst die URL für den Upload ein. Die URL erfragen Sie bitte bei ihrem Upload Portal.
+        Weiterhin müssen der Benutzername und das Passwort für die Authentifizierung angegeben werden. Eventuell müssen die
+        Dateien noch vor dem Upload vorbereitet werden. Dazu dient das Feld Vorbereitung.
+        Hier kann eine Batchdatei angegeben werden, die die Dateivorbereitung übernimmt. Näheres erfragen Sie bitte bei ihrem Upload-Portal.
+      </para>
+    </section>
+    <section>
+      <title>Karte</title>
+      <para>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resource/settings_dialog_3.png" format="PNG" />
+          </imageobject>
+        </mediaobject>
+        Hier können Sie einstellen, mit welchem Viewer Sie die Kartendarstellung haben möchten. Dabei gibt es 3
+        Möglichkeiten:
+        <variablelist>
+          <varlistentry>
+            <term>interner Viewer</term>
+            <listitem>
+              <para>Mit dieser Einstellung wird der interne Viewer gestartet. Diese kann den Track oder die Datei auf
+                verschiedenen Karten darstellen. Z.Z. sind
+                implementiert: OpenStreetMap, VisualEarth und OpenSeaMap. Näheres
+                dazu finden Sie im Kapitel Kartendarstellung. Es können mehrere
+                Kartendarstellungen
+                gleichzeitig aktiv sein.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Browser</term>
+            <listitem>
+              <para>
+                Hier werden die Daten mithilfe des Tools
+                <ulink url="http://www.routeconverter.com/">RouteConverter</ulink>
+                in einem Browser zur Anzeige gebracht. Näheres finden Sie in der Beschreibung zu dem Tool.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>externes Programm</term>
+            <listitem>
+              <para>Mit Hilfe dieser Option können Sie ihr eigenes Programm zur Kartenanzeige verwenden. Übergeben wird eine
+                NMEA0183 kompatible Datendatei.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </section>
+    <indexterm>
+      <primary>Einstellungen</primary>
+    </indexterm>
+  </chapter>
+  <chapter id="about">
+    <title>Über MCS Depth Logger</title>
+    <para>
+      Mehr Informationen sowie eine Online Seite zur Konfigurations des
+      Loggers finden sie unter
+      <ulink url="http://wkla.dyndns.org/mcslog">MCS Depth Logger</ulink>
+    </para>
+  </chapter>
+  <appendix id="Anhang">
+    <title>Dateiformat des Hardwareloggers</title>
+    <para>Der Hardwarelogger hat ein etwas modifiziertes NMEA-Dateiformat. Ein Datensatz besteht aus 3 Teilen.
+      Zunächst kommt ein Zeitstempel, dann folgt eine Kanalkennzeichnung und als letzen Teil folgt der eigentliche
+      NMEA Datensatz. Alle Teile sind durch ein Semikolon getrennt.
+    </para>
+    <para>Zeitstempel: Dieser ist nach folgendem Format aufgebaut und gibt die Zeit nach dem Start des Loggers an.
+      Format: HH:mm:ss.SSS z.B.: 00:00:11.165. Der Zeitstempel gibt den Zeitpunkt an, an dem das 1. Byte im Logger
+      eingetroffen ist.
+    </para>
+    <para>Kanalkennzeichnung: Die Kanalkennzeichnung gibt an, auf welchem Kanal der Datensatz eingetroffen ist.
+      Dieses dient der Identifizierung und Fehlerkorrektur. Möglich sind: A, B und I (intern).
+    </para>
+    <para>NMEA Daten: Hier werden die originalen NMEA Daten ausgegeben.</para>
+    <para>
+      Es werden folgende eigene Meldungen generiert:
+      <variablelist mark='bullet'>
+        <varlistentry>
+          <term>Start/Stop Meldungen:</term>
+          <listitem>
+            <para>
+              $POSMST,Start NMEA Logger,V 0.1.2*30
+            </para>
+            <para>
+              $POSMSO,Stop NMEA Logger*3A
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Lagedaten (Alle 3 Achsen):</term>
+          <listitem>
+            <para>
+              $POSMGYR,1800,7772,13164*5C
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Beschleunigungsdaten (Alle 3 Achsen):</term>
+          <listitem>
+            <para>
+              $POSMACC,-684,-2145,-7012*7D
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Betriebsspannung (Optional):</term>
+          <listitem>
+            <para>
+              $POSMVCC,4962*72
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Daten von Seatalk:</term>
+          <listitem>
+            <para>
+              $POSMSK,4AEF4245265E62*72
+            </para>
+            <para>
+              Da Seatalk ein binäres Format ist, werden die einzelnen Bytes als HEX ausgegeben. NMEA Kennzeichnung ist $POSMSK.
+              Danach folgt eine Kolonne aus
+              HEX
+              Zahlen. Jeweils 2 Ziffern bilden ein Byte.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      Alles kann man auch hier nachlesen:
+      <ulink url="http://wkla.dyndns.org/ArduinoWiki/doku.php?id=arduino:oseam">OpenSeaMap Hardware Logger</ulink>
+    </para>
+    <indexterm>
+      <primary>Dateiformat</primary>
+    </indexterm>
+  </appendix>
+</book>

@@ -1,0 +1,257 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.mcs.depth</groupId>
+  <artifactId>MCSDepthLogger</artifactId>
+  <version>0.2.313-SNAPSHOT</version>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <url>http://www.wk-music.de</url>
+  <description>MCSDepthLogger</description>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Wilfried Klaas</name>
+      <email>w.klaas@gmx.de</email>
+      <organization>MCS</organization>
+      <organizationUrl>http://www.wk-music.de</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <timestamp>${maven.build.timestamp}</timestamp>
+    <maven.build.timestamp.format>dd.mm.yyyy HH:mm</maven.build.timestamp.format>
+    <httpcomponents.version>4.3.6</httpcomponents.version>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>de.mcs.depth.MainGUI</mainClass>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+            </manifest>
+            <manifestEntries>
+              <Build-Time>${maven.build.timestamp}</Build-Time>
+              <Application-Name>${project.artifactId}</Application-Name>
+              <Application-Update-Id>70</Application-Update-Id>
+              <Application-Update-Url>http\://wkla.no-ip.biz/downloader/version.php?ID\=68</Application-Update-Url>
+              <Application-Url>http\://wkla.no-ip.biz/</Application-Url>
+              <Implementation-Vendor>MCS, Media Computer Software</Implementation-Vendor>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+						<!-- <configuration> <transformers> <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
+							<mainClass></mainClass> </transformer> </transformers> </configuration> -->
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+        <version>1.7.25</version>
+        <executions>
+          <execution>
+            <id>l4j-gui</id>
+            <phase>package</phase>
+            <goals>
+              <goal>launch4j</goal>
+            </goals>
+            <configuration>
+              <headerType>gui</headerType>
+              <dontWrapJar>false</dontWrapJar>
+              <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+              <outfile>dist/${project.artifactId}.exe</outfile>
+              <downloadUrl>http://java.com/download</downloadUrl>
+              <icon>src\main\resources\cassette.ico</icon>
+              <jre>
+                <path>tools/jdk-12.0.1</path>
+                <minVersion>1.8.0</minVersion>
+                <jdkPreference>jreOnly</jdkPreference>
+              </jre>
+              <splash>
+                <file>src\main\java\resources\Willie-Logo4_256cols320x.bmp</file>
+                <waitForWindow>true</waitForWindow>
+                <timeout>60</timeout>
+                <timeoutErr>true</timeoutErr>
+              </splash>
+              <versionInfo>
+                <fileVersion>1.0.0.0</fileVersion>
+                <txtFileVersion>${project.version}</txtFileVersion>
+                <fileDescription>${project.name}</fileDescription>
+                <copyright>2019 MCS</copyright>
+                <productVersion>1.0.0.0</productVersion>
+                <txtProductVersion>1.0.0.0</txtProductVersion>
+                <productName>${project.name}</productName>
+                <companyName>MCS</companyName>
+                <internalName>${project.artifactId}</internalName>
+                <originalFilename>${project.artifactId}.exe</originalFilename>
+              </versionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <executable>ISCC.exe</executable>
+          <workingDirectory>...</workingDirectory>
+          <arguments>
+            <argument>setup/setup.iss</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>net.sourceforge.jmeasurement2</groupId>
+      <artifactId>MCSUtils</artifactId>
+      <version>1.0.150</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>slash.navigation</groupId>
+      <artifactId>RouteConverterCmdLine</artifactId>
+      <version>2.26</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/RouteConverterCmdLine-2.26.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>de.mcs.help</groupId>
+      <artifactId>Help</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Help.jar</systemPath>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.jdesktop/appframework -->
+    <dependency>
+      <groupId>org.jdesktop</groupId>
+      <artifactId>appframework</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpcomponents.version}</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>${httpcomponents.version}</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.swinglabs.swingx/swingx-all -->
+    <dependency>
+      <groupId>org.swinglabs.swingx</groupId>
+      <artifactId>swingx-all</artifactId>
+      <version>1.6.5-1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
+    <dependency>
+      <groupId>org.jfree</groupId>
+      <artifactId>jfreechart</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-configuration2</artifactId>
+      <version>2.5</version>
+    </dependency>
+-->
+    <!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.10</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+      <version>2.0.6</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.5</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/com.jgoodies/jgoodies-forms -->
+    <dependency>
+      <groupId>com.jgoodies</groupId>
+      <artifactId>jgoodies-forms</artifactId>
+      <version>1.9.0</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/javax.help/javahelp -->
+    <dependency>
+      <groupId>javax.help</groupId>
+      <artifactId>javahelp</artifactId>
+      <version>2.0.05</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
