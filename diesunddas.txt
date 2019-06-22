@@ -1,0 +1,7 @@
+Upload url for open sea map files
+http://depth.openseamap.org:8080/org.osm.depth.upload/api2/track
+
+TODO
+- convert to maven project
+  - newer commons configuration 2
+  
