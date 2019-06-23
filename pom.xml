@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.mcs.depth</groupId>
   <artifactId>MCSDepthLogger</artifactId>
-  <version>0.2.314-SNAPSHOT</version>
+  <version>0.2.313-SNAPSHOT</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <url>http://www.wk-music.de</url>
   <description>MCSDepthLogger</description>
@@ -30,6 +30,7 @@
   
   <properties>
     <project.scm.id>github-server</project.scm.id>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>dd.mm.yyyy HH:mm</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
