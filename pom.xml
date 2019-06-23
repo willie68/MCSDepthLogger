@@ -23,15 +23,65 @@
       <organizationUrl>http://www.wk-music.de</organizationUrl>
     </developer>
   </developers>
-
+  
+  <scm>
+    <developerConnection>scm:git:https://github.com/willie68/MCSDepthLogger.git</developerConnection>
+  </scm>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <timestamp>${maven.build.timestamp}</timestamp>
     <maven.build.timestamp.format>dd.mm.yyyy HH:mm</maven.build.timestamp.format>
+    <build.timestamp>${maven.build.timestamp}</build.timestamp>
+    <releaseVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion} - Beta</releaseVersion>
     <httpcomponents.version>4.3.6</httpcomponents.version>
   </properties>
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>timestamp-property</id>
+            <goals>
+              <goal>timestamp-property</goal>
+            </goals>
+            <configuration>
+              <name>build.year</name>
+              <pattern>yyyy</pattern>
+              <unit>year</unit>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+            <nonFilteredFileExtension>gif</nonFilteredFileExtension>
+            <nonFilteredFileExtension>bmp</nonFilteredFileExtension>
+            <nonFilteredFileExtension>png</nonFilteredFileExtension>
+            <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+            <nonFilteredFileExtension>swf</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
@@ -101,7 +151,7 @@
                 <jdkPreference>jreOnly</jdkPreference>
               </jre>
               <splash>
-                <file>src\main\java\resources\Willie-Logo4_256cols320x.bmp</file>
+                <file>src\main\resources\Willie-Logo4_256cols320x.bmp</file>
                 <waitForWindow>true</waitForWindow>
                 <timeout>60</timeout>
                 <timeoutErr>true</timeoutErr>
