@@ -107,7 +107,8 @@ public class EditTrackDialog extends JDialog {
     } else {
       setLocation(100, 100);
     }
-    this.setTitle(getTranslatedString("editTrackDialog.title"));
+    String string = getTranslatedString("editTrackDialog.title");
+    this.setTitle(string);
     getContentPane().setLayout(new BorderLayout());
     contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(contentPanel, BorderLayout.CENTER);

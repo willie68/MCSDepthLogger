@@ -167,6 +167,7 @@ public class MainGUI extends SingleFrameApplication implements StatusAndProgress
 
   public static void main(String[] args) {
     System.setProperty("java.net.useSystemProxies", "true");
+    System.setProperty("java.util.PropertyResourceBundle.encoding", "ISO-8859-1");
     // System.getProperties().list(System.out);
     try {
       javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
