@@ -5,3 +5,5 @@
 /target
 
 tools/jdk-12\.0\.1/
+
+dependency-reduced-pom\.xml
