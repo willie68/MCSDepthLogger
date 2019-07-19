@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.mcs.depth</groupId>
   <artifactId>MCSDepthLogger</artifactId>
-  <version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion} - Beta</version>
+  <version>0.2.314</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <url>http://www.wk-music.de</url>
   <description>MCSDepthLogger</description>
