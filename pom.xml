@@ -35,7 +35,7 @@
     <maven.build.timestamp.format>dd.mm.yyyy HH:mm</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <myReleaseVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion} - Beta</myReleaseVersion>
-    <httpcomponents.version>4.3.6</httpcomponents.version>
+    <httpcomponents.version>4.5.13</httpcomponents.version>
   </properties>
   <build>
     <resources>
